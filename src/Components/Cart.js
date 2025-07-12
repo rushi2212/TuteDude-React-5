@@ -84,7 +84,7 @@ const Cart = () => {
             <Link to="/" className="btn btn-outline-secondary">
               Continue Shopping
             </Link>
-            <Link to="/payment" className="btn btn-primary">
+            <Link to="/payment" className="btn btn-primary" state={{ totalPrice: totalPrice }}>
               Proceed to Checkout
             </Link>
           </div>

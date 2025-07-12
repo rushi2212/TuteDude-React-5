@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useLocation } from 'react-router-dom';
 
-const Payment = ({ totalPrice = 0 }) => {
+const Payment = () => {
+  const location = useLocation();
+  const totalPrice = location.state?.totalPrice || 0;
+  
   const [cardNumber, setCardNumber] = useState('');
   const [expiry, setExpiry] = useState('');
   const [cvv, setCvv] = useState('');
