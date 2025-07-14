@@ -12,9 +12,7 @@ const cartReducer = (state = initialState, action) => {
         return {
           ...state,
           cartItems: state.cartItems.map(item =>
-            item.id === action.payload.id 
-              ? { ...item, quantity: item.quantity + 1 }
-              : item
+            item.id === action.payload.id ? { ...item, quantity: item.quantity + 1 } : item
           )
         };
       }
@@ -26,23 +24,13 @@ const cartReducer = (state = initialState, action) => {
     case INCREASE_QUANTITY:
       return {
         ...state,
-        cartItems: state.cartItems.map(item =>
-          item.id === action.payload 
-            ? { ...item, quantity: item.quantity + 1 } 
-            : item
-        )
+        cartItems: state.cartItems.map(item => item.id === action.payload ? { ...item, quantity: item.quantity + 1 } : item )
       };
 
     case DECREASE_QUANTITY:
       return {
         ...state,
-        cartItems: state.cartItems
-          .map(item =>
-            item.id === action.payload 
-              ? { ...item, quantity: item.quantity - 1 } 
-              : item
-          )
-          .filter(item => item.quantity > 0)
+        cartItems: state.cartItems.map(item => item.id === action.payload ? { ...item, quantity: item.quantity - 1 } : item ).filter(item => item.quantity > 0)
       };
 
     default:
