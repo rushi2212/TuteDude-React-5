@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { clearCart } from './redux/Action';
 
 const Payment = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const totalPrice = location.state?.totalPrice || 0;
   
   const [cardNumber, setCardNumber] = useState('');
@@ -13,10 +17,11 @@ const Payment = () => {
   const handlePayment = (e) => {
     e.preventDefault();
     if (cardNumber && expiry && cvv) {
+      // Dispatch clearCart action
+      dispatch(clearCart());
       alert('Payment successful!');
-      setCardNumber('');
-      setExpiry('');
-      setCvv('');
+      // Navigate to a confirmation page or home
+      navigate('/');
     } else {
       alert('Please fill in all details.');
     }

@@ -33,6 +33,12 @@ const cartReducer = (state = initialState, action) => {
         cartItems: state.cartItems.map(item => item.id === action.payload ? { ...item, quantity: item.quantity - 1 } : item ).filter(item => item.quantity > 0)
       };
 
+    case 'CLEAR_CART':
+    return {
+        ...state,
+        cartItems: []
+    };
+
     default:
       return state;
   }
